@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import {
   Terminal as TerminalIcon,
   ChevronRight,
   Folder,
   FileText,
-  Image,
+  Image as ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -145,7 +146,7 @@ const useTerminal = () => {
                 {item.type === "directory" ? (
                   <Folder className="mr-2 text-yellow-500" size={16} />
                 ) : item.name.endsWith(".jpg") || item.name.endsWith(".png") ? (
-                  <Image className="mr-2 text-blue-500" size={16} />
+                  <ImageIcon className="mr-2 text-blue-500" size={16} />
                 ) : (
                   <FileText className="mr-2 text-gray-500" size={16} />
                 )}
@@ -168,8 +169,8 @@ const useTerminal = () => {
         if (!file) return `File not found: ${args[0]}`;
         if (file.name.endsWith(".jpg") || file.name.endsWith(".png")) {
           return (
-            <img
-              src={file.content}
+            <Image
+              src={file.content ?? ""}
               alt={file.name}
               className="max-w-full h-auto"
             />
