@@ -23,8 +23,13 @@ type Command = {
   action: (args: string[]) => string | React.ReactNode;
 };
 
+type HistoryItem = {
+  input: string;
+  output: string | React.ReactNode;
+};
+
 const useTerminal = () => {
-  const [history, setHistory] = useState<(string | React.ReactNode)[]>([]);
+  const [history, setHistory] = useState<HistoryItem[]>([]);
   const [currentDirectory, setCurrentDirectory] = useState<string[]>([]);
 
   const fileSystem: FileSystemItem = {

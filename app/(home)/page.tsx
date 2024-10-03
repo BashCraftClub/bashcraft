@@ -14,7 +14,6 @@ export default function Home() {
           <Hero />
         </div>
         <InfiniteMovingCardsDemo />
-
         <div className="">
           <VelocityScroll
             text="JOIN US NOW!"
