@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import {
   Terminal as TerminalIcon,
   ChevronRight,
   Folder,
   FileText,
-  Image as ImageIcon,
+  Image,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -144,9 +143,9 @@ const useTerminal = () => {
             {currentDir.children?.map((item) => (
               <div key={item.name} className="flex items-center">
                 {item.type === "directory" ? (
-                  <Folder className="mr-2 text-yellow-500" size={16} />
+                  <Folder className="mr-2 text-[#40C057]" size={16} />
                 ) : item.name.endsWith(".jpg") || item.name.endsWith(".png") ? (
-                  <ImageIcon className="mr-2 text-blue-500" size={16} />
+                  <Image className="mr-2 text-blue-500" size={16} />
                 ) : (
                   <FileText className="mr-2 text-gray-500" size={16} />
                 )}
@@ -169,8 +168,8 @@ const useTerminal = () => {
         if (!file) return `File not found: ${args[0]}`;
         if (file.name.endsWith(".jpg") || file.name.endsWith(".png")) {
           return (
-            <Image
-              src={file.content ?? ""}
+            <img
+              src={file.content}
               alt={file.name}
               className="max-w-full h-auto"
             />
@@ -216,7 +215,7 @@ const useTerminal = () => {
           <Link
             href="https://forms.gle/exampleForm"
             target="_blank"
-            className="text-blue-500 hover:underline ml-2"
+            className="text-[#40C057] hover:underline ml-2"
           >
             Application Form
           </Link>
@@ -241,7 +240,7 @@ const useTerminal = () => {
       name: "bashcraft",
       description: "Display welcome message",
       action: () => (
-        <pre className="text-green-500 font-bold">
+        <pre className="text-[#40C057] font-bold">
           {`
  __          __  _                            _          ____            _     ____            __ _   
  \\ \\        / / | |                          | |        |  _ \\          | |   / ___|          / _| |  
@@ -280,11 +279,7 @@ export default function Terminal() {
     e.preventDefault();
     if (input.trim()) {
       const output = executeCommand(input);
-      setHistory([
-        ...history,
-        `/${currentDirectory.join("/")}> ${input}`,
-        output,
-      ]);
+      setHistory([...history, { input, output }]);
       setInput("");
     }
   };
@@ -300,11 +295,7 @@ export default function Terminal() {
         setInput(matchingCommands[0]);
       } else if (matchingCommands.length > 1) {
         const output = matchingCommands.join("  ");
-        setHistory([
-          ...history,
-          `/${currentDirectory.join("/")}> ${input}`,
-          output,
-        ]);
+        setHistory([...history, { input, output }]);
       }
     }
   };
@@ -319,32 +310,43 @@ export default function Terminal() {
   }, [history]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 bg-background text-green-400 rounded-lg shadow-lg font-mono">
+    <div className="w-full max-w-6xl mx-auto p-4 bg-background text-green-500 rounded-lg shadow-lg font-mono">
       <div className="flex items-center mb-4 pb-2">
-        <TerminalIcon className="mr-2" />
-        <h2 className="text-xl font-bold">BashTerm</h2>
+        <h2 className="text-xl font-bold">./bashterm</h2>
       </div>
-      <div ref={terminalRef} className="h-96 overflow-y-auto mb-4">
-        {history.map((line, index) => (
-          <div key={index} className="whitespace-pre-wrap break-words">
-            {typeof line === "string" ? line : line}
-          </div>
-        ))}
-      </div>
-      <form onSubmit={handleSubmit} className="flex items-center">
-        <span className="mr-2">
+      <div className="flex items-center mb-2">
+        <span className="mr-2 text-[#40C057]">
           /{currentDirectory.join("/")}
           {">"}
         </span>
-        <input
-          ref={inputRef}
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="flex-grow bg-background focus:outline-none"
-        />
-      </form>
+        <form onSubmit={handleSubmit} className="flex-grow">
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="w-full bg-transparent focus:outline-none"
+            autoFocus
+          />
+        </form>
+      </div>
+      <div ref={terminalRef} className="h-96 overflow-y-auto">
+        {history.map((item, index) => (
+          <div key={index} className="mb-2">
+            <div className="flex items-center">
+              <span className="mr-2 text-[#40C057]">
+                /{currentDirectory.join("/")}
+                {">"}
+              </span>
+              <span>{item.input}</span>
+            </div>
+            <div className="ml-6 whitespace-pre-wrap break-words">
+              {typeof item.output === "string" ? item.output : item.output}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
