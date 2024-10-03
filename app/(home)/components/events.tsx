@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
-export function InfiniteMovingCardsDemo() {
+export function Events() {
   return (
     <div className="h-[40rem] rounded-md flex flex-col antialiased bg-background items-center justify-center relative overflow-hidden">
       <h1 className="font-semibold text-6xl bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent py-10">
@@ -38,7 +38,7 @@ const events = [
   },
   {
     imageurl:
-      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727894489/bash/image2_j7efnd.png",
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727967532/bash/image5_c3junl.png",
     title: "EVENT-5",
   },
 ];

@@ -316,8 +316,11 @@ export default function Terminal() {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4 bg-background text-green-500 rounded-lg shadow-lg font-mono">
-      <div className="flex items-center mb-4 pb-2">
+      <div className="flex  flex-col items-start mb-4 pb-2">
         <h2 className="text-xl font-bold">./bashterm</h2>
+        <h3 className="text-xl font-semibold">
+          type 'help' for all available commands{" "}
+        </h3>
       </div>
       <div className="flex items-center mb-2">
         <span className="mr-2 text-[#40C057]">

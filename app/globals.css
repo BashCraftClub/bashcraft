@@ -29,18 +29,18 @@ body,
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: hsl(195, 69%, 90%);
+  background: hsl(200, 33%, 98%);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(195, 100%, 50%);
+  background: hsl(210, 25%, 98%);
 }
 
 ::-moz-selection {
   /* Code for Firefox */
   color: #050c0f;
-  background: hsla(195, 69%, 90%, 0.5);
+  background: hsla(200, 16%, 96%, 0.5);
 }
 
 ::selection {

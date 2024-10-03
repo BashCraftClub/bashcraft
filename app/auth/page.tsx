@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import ID from "./ID";
+
+import ID from "./id";
 
 export default function Auth() {
   return (
@@ -29,7 +30,7 @@ export default function Auth() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-[#40C057] placeholder-[#40C057] text-white bg-black focus:outline-none focus:ring-[#40C057] focus:border-[#40C057] focus:z-10 sm:text-sm"
+                    className="rounded-md relative block w-full px-3 py-2 border border-[#40C057] text-white bg-black focus:outline-none sm:text-sm"
                   />
                 </div>
                 <div>
