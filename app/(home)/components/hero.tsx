@@ -49,7 +49,8 @@ export function Hero() {
               className="shadow-2xl transition-all duration-300 gap-2"
               background="radial-gradient(ellipse 80% 70% at 50% 120%, #40C057, #40C057)"
               onClick={() => {
-                router.push("/auth");
+                location.href =
+                  "https://docs.google.com/forms/d/e/1FAIpQLSet2OxNsCdiiDH-U512SJlDNXjHxsLrfaoO1Hh7-9DpFJz01Q/viewform";
               }}
             >
               <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-background lg:text-2xl gap-5">
