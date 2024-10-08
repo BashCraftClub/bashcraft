@@ -2,87 +2,76 @@
 
 import ShimmerButton from "@/components/ui/shimmer-button";
 import { m } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowRightIcon, ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import Terminal from "./terminal";
+import Image from "next/image";
 import { BorderBeam } from "@/components/ui/border-beam";
+import AnimationContainer from "@/components/animation-container";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
 
 export function Hero() {
   const router = useRouter();
 
   return (
-    <div className="py-20 min-h-screen">
-      <div className="max-w-screen flex flex-col items-center py-20 gap-6">
-        <m.h1
-          className="flex flex-col md:flex-row text-5xl md:text-7xl font-bold justify-center text-center md:h-max"
-          variants={{
-            hidden: { opacity: 0, y: -10 },
-            show: { opacity: 1, y: 0, transition: { type: "spring" } },
-          }}
-        >
-          <span className="text-primary-50 leading-none tracking-tight">
-            <span className="bg-gradient-to-b from-white via-white to-background bg-clip-text text-transparent">
-              BashCraft Club
-            </span>{" "}
-          </span>
-        </m.h1>
-        <m.p
-          className="text-gray-500 leading-relaxed text-xl"
-          variants={{
-            hidden: { opacity: 0, y: -10 },
-            show: { opacity: 1, y: 0, transition: { type: "spring" } },
-          }}
-        >
-          The place to collaborate, create, and push the boundaries of what's
-          possible
-        </m.p>
-        <m.div
-          className="flex md:flex-col items-center justify-center w-[500px]"
-          variants={{
-            hidden: { opacity: 0, y: -10 },
-            show: { opacity: 1, y: 0, transition: { type: "spring" } },
-          }}
-        >
-          <div className="grid md:grid-cols-1 place-items-center">
-            <ShimmerButton
-              className="shadow-2xl transition-all duration-300 gap-2"
-              background="radial-gradient(ellipse 80% 70% at 50% 120%, #40C057, #40C057)"
-              onClick={() => {
-                location.href =
-                  "https://docs.google.com/forms/d/e/1FAIpQLSet2OxNsCdiiDH-U512SJlDNXjHxsLrfaoO1Hh7-9DpFJz01Q/viewform";
-              }}
-            >
-              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-background lg:text-2xl gap-5">
-                We Are Hiring
-              </span>
-              <ChevronRight className="h-5 w-5 duration-300 ease-in-out transform group-hover:translate-x-1 m-auto text-white" />
-            </ShimmerButton>
+    <MaxWidthWrapper>
+      <div className="flex flex-col items-center justify-center w-full text-center bg-gradient-to-t from-background">
+        <AnimationContainer className="flex flex-col items-center justify-center w-full text-center">
+          <button className="group relative grid overflow-hidden rounded-full px-4 py-1 shadow-[0_1000px_0_0_hsl(0_0%_20%)_inset] transition-colors duration-200">
+            <span>
+              <span className="spark mask-gradient absolute inset-0 h-[100%] w-[100%] animate-flip overflow-hidden rounded-full [mask:linear-gradient(white,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:rotate-[-90deg] before:animate-rotate before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%]" />
+            </span>
+            <span className="backdrop absolute inset-[1px] rounded-full bg-background transition-colors duration-200 group-hover:bg-background" />
+            <span className="h-full w-full blur-md absolute bottom-0 inset-x-0 bg-gradient-to-tr from-background"></span>
+            <span className="z-10 py-0.5 text-sm text-neutral-100 flex items-center justify-center gap-1">
+              #WeAreHiring
+            </span>
+          </button>
+          <h1 className="text-white text-center py-6 text-5xl font-bold tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl !leading-[1.15] w-full font-heading">
+            Welcome to{" "}
+            <span className="text-transparent bg-gradient-to-r from-[#40C057] to-green-600 bg-clip-text inline-bloc">
+              BashCraft
+            </span>
+          </h1>
+          <p className="mb-12 text-lg tracking-tight text-white md:text-xl text-balance">
+            The place to collaborate,create and
+            <br className="md:block" />
+            <span className="md:block">
+              push the boundaries of what's possible
+            </span>
+          </p>
+          <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50">
+            <Button asChild>
+              <Link href={"/auth/sign-in"} className="flex items-center">
+                Join Us Now
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </div>
-        </m.div>
-        <m.div
-          className="flex md:flex-col items-center justify-center space-x-4 mt-4 w-[500px]"
-          variants={{
-            hidden: { opacity: 0, y: -10 },
-            show: { opacity: 1, y: 0, transition: { type: "spring" } },
-          }}
-        ></m.div>
-      </div>
+        </AnimationContainer>
 
-      <m.div
-        className="mx-auto max-w-[1200px]"
-        variants={{
-          hidden: { opacity: 0, y: -10 },
-          show: { opacity: 1, y: 0, transition: { type: "spring" } },
-        }}
-      >
-        <Suspense fallback={<div>Loading...</div>}>
-          <div className=" relative">
+        <AnimationContainer
+          delay={0.2}
+          className="relative pt-20 pb-20 md:py-32 px-2 bg-transparent w-full"
+        >
+          <div className="absolute md:top-[10%] left-1/2 gradient w-3/4 -translate-x-1/2 h-1/4 md:h-1/3 inset-0 blur-[5rem] animate-image-glow"></div>
+          <div className="-m-2 rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl">
+            <BorderBeam
+              size={250}
+              duration={12}
+              delay={9}
+              colorFrom="#40C057"
+              colorTo="#40C057"
+            />
             <Terminal />
-            <BorderBeam colorFrom="#40C057" colorTo="#40C057" />
+            <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-gradient-to-t from-background z-40"></div>
+            <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-gradient-to-t from-background z-50"></div>
           </div>
-        </Suspense>
-      </m.div>
-    </div>
+        </AnimationContainer>
+      </div>
+    </MaxWidthWrapper>
   );
 }

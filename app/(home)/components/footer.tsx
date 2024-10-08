@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { Slack, Github, Linkedin, Twitter, Moon } from "lucide-react";
+import { Github, Linkedin, Instagram } from "lucide-react";
 import Image from "next/image";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -18,14 +19,17 @@ const Footer = () => {
                 width={200}
               ></Image>
             </div>
-            <p className="max-w-xs mb-4">
-              Generate smooth, AI-based satellite video visualizations
-            </p>
+            <p className="max-w-xs mb-4">no fluff; just engineering</p>
             <div className="flex space-x-4">
-              <Slack size={20} />
-              <Github size={20} />
-              <Linkedin size={20} />
-              <Twitter size={20} />
+              <Link href={"https://www.linkedin.com/company/bashcraft/"}>
+                <Linkedin size={20} />
+              </Link>
+              <Link href={"https://github.com/BashCraftClub"}>
+                <Github size={20} />
+              </Link>
+              <Link href={"https://www.instagram.com/bashcraft.vit/"}>
+                <Instagram size={20} />
+              </Link>
             </div>
           </div>
 
@@ -47,7 +51,6 @@ const Footer = () => {
                 <li>About us</li>
                 <li>Careers</li>
                 <li>Contact</li>
-                <li>Brand ↗</li>
               </ul>
             </div>
 
