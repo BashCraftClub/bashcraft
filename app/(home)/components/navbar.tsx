@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="flex items-centre justify-center gap-5">
           <Button
             variant="outline"
-            onClick={() => router.push("/auth")}
+            onClick={() => router.push("/auth/login")}
             className=" text-white"
           >
             LogIn
