@@ -18,7 +18,7 @@ model User {
   name          String?
   email         String          @unique
   emailVerified DateTime?
-  image         String?
+  image         String          @default("https://res.cloudinary.com/dcwsgwsfw/image/upload/v1730661968/bash/giga_rld4qi.jpg")
   password      String?
   role          UserRole @default(USER)
   accounts      Account[]

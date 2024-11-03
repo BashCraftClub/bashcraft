@@ -7,6 +7,8 @@ import {
   useTexture,
   Environment,
   Lightformer,
+  Text,
+  Center,
 } from "@react-three/drei";
 import {
   BallCollider,
@@ -19,19 +21,27 @@ import {
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
+
+// Preload assets
 useGLTF.preload(
-  "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727533212/bash/untitled_th7qua.glb"
+  "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1730658816/bash/ID-CUSTOM-FINAL_bdl6cc.glb"
 );
 useTexture.preload(
   "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727533190/bash/Frame_4_feplbi.png"
 );
 
-export default function ID() {
+export default function ID({
+  user = {
+    userName: "Om Mishra",
+    profileImage:
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1730658895/bash/Image-Square_qzqfvf.png", // Default profile image
+  },
+}) {
   return (
     <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
       <ambientLight intensity={Math.PI} />
       <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-        <Band />
+        <Band user={user} />
       </Physics>
       <Environment background blur={0.75}>
         <color attach="background" args={["black"]} />
@@ -68,9 +78,52 @@ export default function ID() {
   );
 }
 
-function Band({ maxSpeed = 50, minSpeed = 10 }) {
-  const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef() // prettier-ignore
-  const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3() // prettier-ignore
+function Band({ user, maxSpeed = 50, minSpeed = 10 }) {
+  const blackAndWhiteShader = {
+    uniforms: {
+      tDiffuse: { value: null },
+      brightness: { value: 1.0 },
+      contrast: { value: 1.0 },
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D tDiffuse;
+      uniform float brightness;
+      uniform float contrast;
+      varying vec2 vUv;
+
+      void main() {
+        vec4 color = texture2D(tDiffuse, vUv);
+        
+        // Convert to grayscale using luminance values
+        float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+        
+        // Apply brightness and contrast
+        gray = gray * brightness;
+        gray = (gray - 0.5) * contrast + 0.5;
+        
+        gl_FragColor = vec4(vec3(gray), color.a);
+      }
+    `,
+  };
+
+  const band = useRef(),
+    fixed = useRef(),
+    j1 = useRef(),
+    j2 = useRef(),
+    j3 = useRef(),
+    card = useRef();
+  const vec = new THREE.Vector3(),
+    ang = new THREE.Vector3(),
+    rot = new THREE.Vector3(),
+    dir = new THREE.Vector3();
+
   const segmentProps = {
     type: "dynamic",
     canSleep: true,
@@ -78,12 +131,32 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
     angularDamping: 2,
     linearDamping: 2,
   };
+
   const { nodes, materials } = useGLTF(
-    "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727533212/bash/untitled_th7qua.glb"
+    "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1730658816/bash/ID-CUSTOM-FINAL_bdl6cc.glb"
   );
+
+  // Load the lanyard texture and profile image
   const texture = useTexture(
     "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1727533190/bash/Frame_4_feplbi.png"
   );
+
+  // Load profile image texture
+  const profileTexture = useTexture(user.profileImage);
+  profileTexture.minFilter = THREE.LinearFilter;
+  profileTexture.magFilter = THREE.LinearFilter;
+
+  const bwMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      tDiffuse: { value: profileTexture },
+      brightness: { value: 1.0 }, // Adjust brightness (1.0 is normal)
+      contrast: { value: 1.0 }, // Adjust contrast (1.0 is normal)
+    },
+    vertexShader: blackAndWhiteShader.vertexShader,
+    fragmentShader: blackAndWhiteShader.fragmentShader,
+    transparent: true,
+  });
+
   const { width, height } = useThree((state) => state.size);
   const [curve] = useState(
     () =>
@@ -97,10 +170,13 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.45, 0]]) // prettier-ignore
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useSphericalJoint(j3, card, [
+    [0, 0, 0],
+    [0, 1.45, 0],
+  ]);
 
   useEffect(() => {
     if (hovered) {
@@ -122,7 +198,6 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       });
     }
     if (fixed.current) {
-      // Fix most of the jitter when over pulling the card
       [j1, j2].forEach((ref) => {
         if (!ref.current.lerped)
           ref.current.lerped = new THREE.Vector3().copy(
@@ -137,13 +212,11 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
           delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
         );
       });
-      // Calculate catmul curve
       curve.points[0].copy(j3.current.translation());
       curve.points[1].copy(j2.current.lerped);
       curve.points[2].copy(j1.current.lerped);
       curve.points[3].copy(fixed.current.translation());
       band.current.geometry.setPoints(curve.getPoints(32));
-      // Tilt it back towards the screen
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
@@ -201,6 +274,27 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
               />
             </mesh>
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+
+            {/* Profile Image */}
+            <mesh position={[-0.1, 0.3, 0.01]} rotation={[0, 0, 0]}>
+              <planeGeometry args={[0.25, 0.4]} />
+              <primitive object={bwMaterial} attach="material" />
+            </mesh>
+
+            {/* Username Text */}
+            <group position={[0, 0.2, 0.01]} rotation={[0, 0, 0]}>
+              <Text
+                position={[0.15, 0.48, 0]}
+                fontSize={0.03}
+                color="white"
+                font="/fonts/UbuntuSansMono-Bold.ttf"
+                anchorX="center"
+                anchorY="middle"
+                maxWidth={1}
+              >
+                {user.userName}
+              </Text>
+            </group>
           </group>
         </RigidBody>
       </group>
