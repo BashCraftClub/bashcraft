@@ -14,8 +14,9 @@ export default auth((req) => {
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isUploadThingRoute = nextUrl.pathname.startsWith("/api/uploadthing");
 
-  if (isApiAuthRoute) {
+  if (isApiAuthRoute || isUploadThingRoute) {
     return;
   }
 

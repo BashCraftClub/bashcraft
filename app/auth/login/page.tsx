@@ -1,4 +1,4 @@
-import ID from "@/app/auth/id";
+import IDDemo from "@/components/auth/IdDemo";
 import { LoginForm } from "@/components/auth/login-form";
 
 export default function LoginPage() {
@@ -11,7 +11,7 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="hidden lg:flex flex-1 items-center justify-center bg-black p-8">
-          <ID />
+          <IDDemo />
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import ID from "@/app/auth/id";
+import IDDemo from "@/components/auth/IdDemo";
 import { RegisterForm } from "@/components/auth/register-form";
 
 export default function RegisterPage() {
@@ -11,7 +11,7 @@ export default function RegisterPage() {
           </div>
         </div>
         <div className="hidden lg:flex flex-1 items-center justify-center bg-black p-8">
-          <ID />
+          <IDDemo />
         </div>
       </div>
     </>
