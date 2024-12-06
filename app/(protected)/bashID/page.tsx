@@ -28,7 +28,7 @@ export default function BashID() {
         <div className="h-full w-full">
           <div className="bg-black p-8 flex items-center justify-between">
             <CircleArrowLeft
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/dashboard")}
               className="text-[#40C057]"
             />
           </div>
