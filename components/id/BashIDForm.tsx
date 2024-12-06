@@ -12,7 +12,7 @@ export function BashIDForm() {
       </div>
       <Button
         onClick={() => router.push("/bashID")}
-        className="w-full bg-[#40C057] hover:bg-[#2f9e48] text-black font-semibold"
+        className="w-full bg-[#40C057] hover:bg-[#2f9e48] text-white font-semibold"
       >
         Get ID
       </Button>

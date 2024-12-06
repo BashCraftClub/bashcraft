@@ -68,7 +68,7 @@ const Footer = () => {
       </div>
       <div className=" flex flex-col items-center">
         <div className="w-full justify-center mt-5 -mb-10">
-          <TextHoverEffect text="bashcraft" />
+          <TextHoverEffect text="./bashcraft" />
         </div>
       </div>
     </footer>

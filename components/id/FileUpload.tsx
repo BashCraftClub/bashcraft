@@ -9,7 +9,7 @@ export default function FileUpload() {
   return (
     <main className="flex flex-col items-center justify-between p-24">
       <UploadDropzone
-        className=" mt-10 ut-button:bg-[#40C057] ut-allowed-content:text-white ut-upload-icon:text-white ut-label:text-[#40C057] ut-button:ut-readying:bg-[#2f9e48]"
+        className=" mt-10 ut-button:bg-[#40C057] ut-allowed-content:text-white ut-upload-icon:text-white ut-label:text-[#40C057] ut-button:ut-readying:bg-[#2f9e48] ut-button:ut-uploading:bg-[#40C057]"
         endpoint="imageUploader"
         onClientUploadComplete={async (res) => {
           if (res && res.length > 0) {
