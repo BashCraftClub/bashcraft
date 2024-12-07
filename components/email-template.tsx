@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 interface EmailTemplateProps {
   verificationLink: string;
 }
@@ -16,7 +15,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     }}
   >
     <div style={{ textAlign: "center", marginBottom: "20px" }}>
-      <Image
+      <img
         src="https://res.cloudinary.com/dcwsgwsfw/image/upload/v1730633928/bash/bash_yag9qh.png"
         alt="BashCraft Club Logo"
         style={{ width: "693px", height: "102px" }}
