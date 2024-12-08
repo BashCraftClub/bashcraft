@@ -62,7 +62,7 @@ const teamMembers = [
     name: "Om Mishra",
     position: "Tech Lead",
     image:
-      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646022/bash/members/WhatsApp_Image_2024-12-08_at_1.49.25_PM_du0st7.jpg",
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733674921/bash/members/WhatsApp_Image_2024-12-08_at_1.49.25_PM_ncv6r7.jpg",
     teamSlug: "tech",
   },
   {
@@ -104,7 +104,7 @@ export default function TeamsPage() {
     <div className="min-h-screen bg-background px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-12 text-center text-4xl font-bold text-white">
-          Our Team
+          MEET OUR TEAM
         </h1>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member) => (

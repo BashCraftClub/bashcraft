@@ -6,8 +6,8 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 export function Events() {
   return (
     <div className="h-[40rem] rounded-md flex flex-col antialiased bg-background items-center justify-center relative overflow-hidden mb-10">
-      <h1 className="font-semibold text-6xl bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent py-10">
-        Events at BashCraft
+      <h1 className="font-semibold text-4xl text-white bg-clip-text text-transparent py-10">
+        EVENTS GALLERY
       </h1>
       <InfiniteMovingCards items={events} direction="right" speed="slow" />
       <InfiniteMovingCards items={events} direction="left" speed="slow" />

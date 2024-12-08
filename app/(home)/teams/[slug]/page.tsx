@@ -25,7 +25,8 @@ const teamData: TeamData = {
         name: "Aditya Joshi",
         image:
           "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733644539/bash/members/IMG_7832_-_Aditya_sbfssh.jpg",
-        quote: "Founder & President",
+        quote:
+          "Don't take yourself too seriously. You’re just a monkey with a plan",
       },
       {
         id: "2",
@@ -33,7 +34,8 @@ const teamData: TeamData = {
 
         image:
           "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733644482/bash/members/IMG_3541_-_Tanya_Chaturvedi_qwfwza.jpg",
-        quote: "Joint Secretary",
+        quote:
+          "Whether tackling complex problems or sharing insights with others, I take pleasure in contributing to projects that challenge and expand my skills as a learner.I'm endlessly curious, so be wary of my pestering.  When I'm not pondering life's big questions, you’ll find me rewatching Gilmore Girls, because who doesn’t love witty banter and questionable life decisions?",
       },
       {
         id: "3",
@@ -41,7 +43,8 @@ const teamData: TeamData = {
 
         image:
           "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733644684/bash/members/IMG-20240921-WA0012_-_HEMANSH_BHAGTANI_22BCE10673_bs1gee.jpg",
-        quote: "Secretary",
+        quote:
+          "I am really passionate about trying the newest tech which is prominent in the industry, hence the reason for me joining the ever-exciting BashCraft Club.",
       },
       {
         id: "4",
@@ -49,7 +52,8 @@ const teamData: TeamData = {
 
         image:
           "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733644795/bash/members/dp1_-_NISARG_VINODKUMAR_GAJJAR_22BCE11142_v0ig0f.jpg",
-        quote: "Treasurer",
+        quote:
+          "As the Treasurer of BashCraft Club, I want to effectively manage the club's financial  operations thus ensuring transparency. My responsibilities included overseeing the club's finances, managing accounts with other clubs, and proper authentication for event fees.",
       },
       {
         id: "5",
@@ -57,7 +61,8 @@ const teamData: TeamData = {
 
         image:
           "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733644935/bash/members/IMG-20241127-WA0100_-_MADHURAM_KULSHRESTHA_22BCE10828_rmaprm.jpg",
-        quote: "Event Coordinator",
+        quote:
+          "I’m a prefinal year CSE student and a tech enthusiast with a passion for Machine Learning and Backend Development. I love the competitive energy of hackathons and believe in working hard as a team to achieve great results. As an Event Coordinator at BashCraft, I focus on creating meaningful events that inspire collaboration and innovation.",
       },
     ],
   },
