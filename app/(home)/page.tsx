@@ -4,6 +4,7 @@ import { Events } from "./components/events";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 
 import { Hero } from "./components/hero";
+import TeamsPage from "./components/team";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
           <Hero />
         </div>
         <Events />
+        <TeamsPage />
       </div>
     </>
   );
