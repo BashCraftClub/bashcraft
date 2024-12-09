@@ -1,4 +1,7 @@
+import { Card, CardContent } from "@/components/ui/card";
 import { MemberCard } from "./member-card";
+import Image from "next/image";
+import Link from "next/link";
 
 const teamMembers = [
   {
@@ -106,6 +109,28 @@ export default function TeamsPage() {
         <h1 className="mb-12 text-center text-4xl font-bold text-white">
           MEET OUR TEAM
         </h1>
+        <div className="flex justify-center mb-6">
+          <Link href="#" className="w-full sm:w-1/2 lg:w-1/3">
+            <Card className="group overflow-hidden rounded-xl border-2 bg-background transition-all hover:scale-105 hover:bg-background">
+              <CardContent className="p-4">
+                <div className="text-center">
+                  <h3 className="mb-2 text-lg font-semibold text-white">
+                    Dr. Dheresh Soni
+                  </h3>
+                  <div className="relative mx-auto mb-4 aspect-square w-full overflow-hidden rounded-lg">
+                    <Image
+                      src="https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733728911/dhiresh-soni_kmrlpx.jpg"
+                      alt="Dr. Dheresh Soni"
+                      fill
+                      className="object-cover transition-transform group-hover:scale-110"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-300">Faculty Cordinator</p>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member) => (
             <MemberCard key={member.id} {...member} />
