@@ -1,10 +1,10 @@
 "use client";
 
-import { Events } from "./components/events";
-import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
+import { Events } from "./_components/events";
 
-import { Hero } from "./components/hero";
-import TeamsPage from "./components/team";
+import { Hero } from "./_components/hero";
+import TeamsPage from "./_components/team";
+import NewsletterSection from "./_components/newletter";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
         </div>
         <Events />
         <TeamsPage />
+        <NewsletterSection />
       </div>
     </>
   );
