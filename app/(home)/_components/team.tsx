@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MemberCard } from "./member-card";
 import Image from "next/image";
 import Link from "next/link";
+import { UserRoundPlus } from "lucide-react";
 
 const teamMembers = [
   {
@@ -14,6 +15,14 @@ const teamMembers = [
   },
   {
     id: "2",
+    name: "Prakhar Pande",
+    position: "Vice President",
+    image:
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1734022419/bash/members/WhatsApp_Image_2024-12-11_at_13.57.04_6f9e42ab_-_Prakhar_Pande_w8zf2p.jpg",
+    teamSlug: "board",
+  },
+  {
+    id: "3",
     name: "Tanya Chaturvedi",
     position: "Joint Secretary",
     image:
@@ -21,7 +30,7 @@ const teamMembers = [
     teamSlug: "board",
   },
   {
-    id: "3",
+    id: "4",
     name: "Hemansh Bhagtani",
     position: "Secretary",
     image:
@@ -29,7 +38,15 @@ const teamMembers = [
     teamSlug: "board",
   },
   {
-    id: "4",
+    id: "5",
+    name: "Aryaman Jha",
+    position: "Operations Lead",
+    image:
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646377/bash/members/WhatsApp_Image_2024-12-06_at_09.15.52_53ff4b01_-_aryaman_qklawh.jpg",
+    teamSlug: "board",
+  },
+  {
+    id: "6",
     name: "Nisarg Gajjar",
     position: "Treasurer",
     image:
@@ -37,7 +54,7 @@ const teamMembers = [
     teamSlug: "board",
   },
   {
-    id: "5",
+    id: "7",
     name: "Madhuram Kulshrestha ",
     position: "Event Coordinator ",
     image:
@@ -45,7 +62,15 @@ const teamMembers = [
     teamSlug: "board",
   },
   {
-    id: "6",
+    id: "8",
+    name: "Brajesh Mohanty",
+    position: "Assistant Operations Lead",
+    image:
+      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1734022708/bash/members/IMG-20241017-WA0136_1_zksh1z.jpg",
+    teamSlug: "board",
+  },
+  {
+    id: "9",
     name: "Siddharth Mohril",
     position: "Design Lead",
     image:
@@ -53,7 +78,7 @@ const teamMembers = [
     teamSlug: "design",
   },
   {
-    id: "7",
+    id: "10",
     name: "Shreyansh Uttam",
     position: "Social Media Lead",
     image:
@@ -61,7 +86,7 @@ const teamMembers = [
     teamSlug: "social",
   },
   {
-    id: "8",
+    id: "11",
     name: "Om Mishra",
     position: "Tech Lead",
     image:
@@ -69,7 +94,7 @@ const teamMembers = [
     teamSlug: "tech",
   },
   {
-    id: "9",
+    id: "12",
     name: "Jayant Singh Rawat",
     position: "Event Management Lead",
     image:
@@ -77,23 +102,16 @@ const teamMembers = [
     teamSlug: "event",
   },
   {
-    id: "10",
+    id: "13",
     name: "Aastha Adhikari ",
     position: "PR & Outreach Lead",
     image:
       "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646156/bash/members/photo2_-_Aastha_Adhikari_23bai10049_sffnoc.jpg",
     teamSlug: "outreach",
   },
+
   {
-    id: "11",
-    name: "Aryaman Jha",
-    position: "Operations Lead",
-    image:
-      "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646377/bash/members/WhatsApp_Image_2024-12-06_at_09.15.52_53ff4b01_-_aryaman_qklawh.jpg",
-    teamSlug: "operations",
-  },
-  {
-    id: "12",
+    id: "14",
     name: "Himanshu kumar singh ",
     position: "Content Lead",
     image:
@@ -135,6 +153,23 @@ export default function TeamsPage() {
           {teamMembers.map((member) => (
             <MemberCard key={member.id} {...member} />
           ))}
+          <Card className="group overflow-hidden rounded-xl border-2 bg-background transition-all hover:scale-105 hover:bg-background">
+            <CardContent className="p-4">
+              <div className="text-center">
+                <h3 className="mb-2 text-lg font-semibold text-white">
+                  This Could Be You
+                </h3>
+                <div className="relative mx-auto mb-4 aspect-square w-full overflow-hidden rounded-lg">
+                  <Link href={"/"}>
+                    <UserRoundPlus className="w-full h-full text-gray-300 opacity-20" />
+                  </Link>
+                </div>
+                <p className="text-sm text-gray-300">
+                  We Will Be Hiring Soon ...
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

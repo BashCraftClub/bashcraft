@@ -66,7 +66,84 @@ const teamData: TeamData = {
       },
     ],
   },
-  // Add other teams here
+  tech: {
+    name: "Tech Team",
+    members: [
+      {
+        id: "1",
+        name: "Om Mishra",
+        quote: "Tech Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733674921/bash/members/WhatsApp_Image_2024-12-08_at_1.49.25_PM_ncv6r7.jpg",
+      },
+      // Add more members here
+    ],
+  },
+  design: {
+    name: "Design Team",
+    members: [
+      {
+        id: "1",
+        name: "Siddharth Mohril",
+        quote: "Design Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733645316/bash/members/20240623_094446_2_-_SIDDHARTH_MOHRIL_22BAI10132_pnnsij.jpg",
+      },
+      // Add more members here
+    ],
+  },
+  social: {
+    name: "Social and Photography Team",
+    members: [
+      {
+        id: "1",
+        name: "Shreyansh Uttam",
+        quote: "Social Media Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733645539/bash/members/IMG_6217_-_Shreyansh_Uttam_lzrkpd.jpg",
+      },
+      // Add more members here
+    ],
+  },
+  event: {
+    name: "Event Management Team",
+    members: [
+      {
+        id: "1",
+        name: "Jayant Singh Rawat",
+        quote: "Event Management Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733645670/bash/members/IMG_6702_-_Jayant_Singh_Rawat_23BCE11823_jjjver.jpg",
+      },
+      // Add more members here
+    ],
+  },
+  outreach: {
+    name: "PR & Outreach Team",
+    members: [
+      {
+        id: "1",
+        name: "Aastha Adhikari ",
+        quote: "PR & Outreach Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646156/bash/members/photo2_-_Aastha_Adhikari_23bai10049_sffnoc.jpg",
+      },
+      // Add more members here
+    ],
+  },
+  content: {
+    name: "Content Team",
+    members: [
+      {
+        id: "1",
+        name: "Himanshu kumar singh ",
+        quote: "Content Lead",
+        image:
+          "https://res.cloudinary.com/dcwsgwsfw/image/upload/v1733646249/bash/members/HKS_-_HIMANSHU_KUMAR_SINGH_22BCE10903_zelohe.jpg",
+      },
+    ],
+    // Add more members here
+  },
 };
 
 export default function TeamPage({ params }: { params: { slug: string } }) {

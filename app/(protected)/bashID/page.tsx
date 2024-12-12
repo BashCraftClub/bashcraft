@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
-import ID from "@/app/(protected)/_components/id";
 import useCurrentUser from "@/hooks/use-current-user";
 import { CircleArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useCurrentProfile from "@/hooks/use-current-profile";
 import { Loader2 } from "lucide-react";
+import dynamic from "next/dynamic";
+const ID = dynamic(() => import("@/app/(protected)/_components/id"), {
+  ssr: false,
+});
 
 export default function BashID() {
   const user = useCurrentUser();
@@ -21,7 +24,7 @@ export default function BashID() {
         <div className="flex gap-2 justify-center items-center h-[calc(100vh-100px)]">
           <Loader2 className="animate-spin text-[#40C057]" size={48} />
           <div className=" flex text-white items-center justify-center">
-            Generating Your ID
+            Getting Your ID
           </div>
         </div>
       ) : (
